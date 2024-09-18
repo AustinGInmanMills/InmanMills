@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
-from gspread import Worksheet, worksheet
 from streamlit_gsheets import GSheetsConnection
 from math import trunc
-
-from unicodedata import decimal
 
 st.set_page_config(
     page_title="Inman Mills Saybrook",
