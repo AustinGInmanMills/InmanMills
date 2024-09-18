@@ -1,2 +1,0 @@
-GSheetsConnection
-streamlit_gsheets
