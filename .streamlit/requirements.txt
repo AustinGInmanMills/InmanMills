@@ -1,5 +1,5 @@
 pandas
 streamlit
-import streamlit_gsheets
+st-gsheets-connection
 streamlit_gsheets
 GSheetsConnection
