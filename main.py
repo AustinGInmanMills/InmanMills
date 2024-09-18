@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import streamlit_gsheets
 from streamlit_gsheets import GSheetsConnection
 from math import trunc
 
