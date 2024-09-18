@@ -1,4 +1,1 @@
-streamlit
-streamlit_gsheets
-gspread
-oauth2client
+st-gsheets-connection
