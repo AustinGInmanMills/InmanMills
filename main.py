@@ -92,8 +92,8 @@ with tab2:
                 login_bttn = st.form_submit_button("KnittingTechLogin")
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
-                    found = employee_data.get(["Username", "Password"])
-                    if found[user_name]:
+                    found = pd.DataFrame(employee_data.get(["Username", "Password"]))
+                    if found.isin([user_name]).any().any():
                         st.write("WORKED")
                     st.write(found)
 
