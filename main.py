@@ -9,4 +9,4 @@ cdf = conn.read(worksheet="Knitting Machines Data", ttl=0)
 ddd = st.datatable(cdf)
 
 
-st.write(ddd, hide_index=True)
+#st.write(ddd, hide_index=True)
