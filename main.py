@@ -91,9 +91,10 @@ with tab2:
                 password = st.text_input("Password")
                 login_bttn = st.form_submit_button("KnittingTechLogin")
                 employee_data = conn.read(worksheet="Employees")
+                
                 if login_bttn:
-                    if employee_data.get[user_name]:
-                        if  employee_data.get[password]:
+                    if employee_data.get[{user_name}]:
+                        if  employee_data.get[{password}]:
                             st.write("Welcome AustinG")
 
 #############################################DOFF CALCULATOR#######################################################################################
