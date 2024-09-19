@@ -3,7 +3,7 @@ from types import NoneType
 
 import streamlit as st
 import pandas as pd
-from streamlit import form_submit_button
+from streamlit import form_submit_button, rerun
 from streamlit_gsheets import GSheetsConnection
 from math import trunc
 
@@ -75,6 +75,7 @@ with tab2:
                 if form_submit_button("Submit"):
                     updating_information = knitting_machine_db_update.copy()
                     conn.update(worksheet="Knitting Machines Data", data=updating_information)
+                    rerun()
 
 #############################################DOFF CALCULATOR#######################################################################################
 
