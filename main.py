@@ -75,6 +75,7 @@ with tab2:
                 if form_submit_button("Submit"):
                     updating_information = knitting_machine_db_update.copy()
                     conn.update(worksheet="Knitting Machines Data", data=updating_information)
+                    st.success("Information successfully updated")
                     rerun()
 
 #############################################DOFF CALCULATOR#######################################################################################
