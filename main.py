@@ -18,7 +18,7 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-conn = st.connection("gsheets", type=GSheetsConnection) # Connects to gSheet conn used for connect
+conn = st.connection("gsheets", type=GSheetsConnection)  # Connects to gSheet conn used for connect
 machines_data = conn.read(worksheet="Knitting Machines Data", ttl=0)
 machines_data = pd.DataFrame(machines_data)
 machines_data['Needle'] = machines_data['Needle'].astype(str)
@@ -31,7 +31,7 @@ hide_st_style = """
             footer {visibility: hidden;}
             header {visibility: hidden;}
             </style>
-            """ #Hides streamlit information on web app
+            """  # Hides streamlit information on web app
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.markdown(
@@ -42,7 +42,7 @@ st.markdown(
                 }
         </style>
     """,
-    unsafe_allow_html=True # Deletes white space on top of web app
+    unsafe_allow_html=True  # Deletes white space on top of web app
 )
 
 tab1, tab2, tab3 = st.tabs(["Home", "Departments", "Information"])
@@ -50,9 +50,8 @@ tab1, tab2, tab3 = st.tabs(["Home", "Departments", "Information"])
 ########################################HOME PAGE###################################################################################################
 
 with tab1:
-    st.markdown("Welcome to Inman Mills Saybrook Plant new Employee website! You can view information about up coming layoffs, overtime, departments and much more.")
-
-
+    st.markdown(
+        "Welcome to Inman Mills Saybrook Plant new Employee website! You can view information about up coming layoffs, overtime, departments and much more.")
 
 ########################################DEPARTMENTS PAGE###################################################################################################
 
@@ -62,7 +61,7 @@ with tab2:
         ("Knitting", "Ring Spinning", "Winding", "Roven", "MJS", "MVS", "Card Room"),
         index=None,
         key="DepartmentBox"
-                 )
+    )
     if department_options_bttn == "Knitting":
         knitting_bttn = st.selectbox(
             "Knitting Department Options",
@@ -91,13 +90,14 @@ with tab2:
                 password = st.text_input("Password")
                 login_bttn = st.form_submit_button("KnittingTechLogin")
                 employee_data = conn.read(worksheet="Employees")
-                
                 if login_bttn:
-                    if employee_data.get[{user_name}]:
-                        if  employee_data.get[{password}]:
+                    found_username = employee_data[employee_data['Username'].str.contains(user_name)]
+                    found_password = employee_data[employee_data['Password'].str.contains(password)]
+                    if found_username:
+                        if found_password:
                             st.write("Welcome AustinG")
 
-#############################################DOFF CALCULATOR#######################################################################################
+        #############################################DOFF CALCULATOR#######################################################################################
 
         if knitting_bttn is None:
             st.divider()
@@ -133,7 +133,7 @@ with tab2:
                         calculation = str(sum)
                         st.write(str(number_dec1), "minutes and", str(minutes_calc), "seconds left")
 
-#############################################END CALCULATOR######################################################################################################
+    #############################################END CALCULATOR######################################################################################################
 
     elif department_options_bttn == "Ring Spinning":
         ring_spinning_bttn = st.selectbox(
