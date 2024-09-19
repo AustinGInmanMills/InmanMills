@@ -106,7 +106,9 @@ with tab2:
                         if knitting_chat_input:
                             with st.chat_message("user"):
                                 st.write(knitting_chat_input)
-                            response = knitting_chat_db.loc[len(knitting_chat_db)] = [knitting_chat_input]
+                            newdata = knitting_chat_db.copy()
+                            response = newdata.loc[len(knitting_chat_db)] = [knitting_chat_input]
+                            newdata2 = newdata
                             st.write(knitting_chat_db)
                             conn.update(worksheet="Knitting Tech Chat Data", data=response)
                     else:
