@@ -93,6 +93,8 @@ with tab2:
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
                     found = employee_data.get(["Username", "Password"])
+                    if found[user_name]:
+                        st.write("WORKED")
                     st.write(found)
 
 #############################################DOFF CALCULATOR#######################################################################################
