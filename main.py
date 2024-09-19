@@ -104,6 +104,9 @@ with tab2:
                         error = st.error("Username not found")
                         time.sleep(3)
                         error.empty()
+                    
+                    st.chat_message()
+                    st.chat_input()
 
         #############################################DOFF CALCULATOR#######################################################################################
 
