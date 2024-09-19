@@ -89,7 +89,7 @@ with tab2:
             with st.form("TechChatLoginForm"):
                 user_name = st.text_input("Username")
                 password = st.text_input("Password")
-                login_bttn = st.button("Login", key="KnittingTechLogin")
+                login_bttn = st.form_submit_button("Login", key="KnittingTechLogin")
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
                     found = employee_data.get(["Username", "Password"])
