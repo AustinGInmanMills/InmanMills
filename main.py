@@ -5,5 +5,5 @@ st.title("Read Google Sheet as DataFrame")
 
 conn = st.connection("gsheets",type=GSheetsConnection)
 cdf = conn.read(worksheet="Knitting Machines Data", ttl=0)
-
-st.write(cdf, hide_index=True)
+cdf = st.dataframe(cdf, hide_index=True)
+st.write(cdf)
