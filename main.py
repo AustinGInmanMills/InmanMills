@@ -102,6 +102,7 @@ with tab2:
                             st.write(knitting_chat)
                         with st.chat_message("user"):
                             st.write(knitting_chat)
+                        knitting_chat_input = st.chat_input()
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
