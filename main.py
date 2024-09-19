@@ -24,6 +24,7 @@ machines_data = pd.DataFrame(machines_data)
 machines_data['Needle'] = machines_data['Needle'].astype(str)
 machines_data['Doff'] = machines_data['Doff'].astype(str)
 machines_data['Rpms'] = machines_data['Rpms'].astype(str)
+global logged_in
 
 hide_st_style = """  
             <style>
@@ -94,7 +95,6 @@ with tab2:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
                         if (employee_data.get(["Username", "Password"]) == password).any().any():
                             success = st.success("Successfully Logged In")
-                            global logged_in
                             logged_in = True
                             time.sleep(3)
                             success.empty()
