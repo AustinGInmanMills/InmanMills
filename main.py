@@ -94,7 +94,7 @@ with tab2:
                 if login_bttn:
                     found = pd.DataFrame(employee_data.get(["Username", "Password"]))
                     if (found == 'AustinG').any().any():
-                        print("Value exists in the DataFrame")
+                        st.write("Value exists in the DataFrame")
                     st.write(found)
 
 #############################################DOFF CALCULATOR#######################################################################################
