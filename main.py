@@ -68,7 +68,7 @@ with tab2:
 
         if knitting_bttn == "Update Machine Information":
             st.caption("Double click a block to edit")
-            machines_data = machines_data.copy()
+            machines_data = machine_db.copy()
             knitting_machine_db_update = st.data_editor(machine_db, hide_index=True)
             with st.form(key="UpdateKnittingMachineDataForm", clear_on_submit=True):
 
