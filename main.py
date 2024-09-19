@@ -24,7 +24,6 @@ machines_data = pd.DataFrame(machines_data)
 machines_data['Needle'] = machines_data['Needle'].astype(str)
 machines_data['Doff'] = machines_data['Doff'].astype(str)
 machines_data['Rpms'] = machines_data['Rpms'].astype(str)
-global logged_in
 
 hide_st_style = """  
             <style>
@@ -86,29 +85,25 @@ with tab2:
                     success.empty()  # Clear the alert
 
         if knitting_bttn == "Technician Chat":
-            with st.form("TechChatLoginForm"):
-                user_name = st.text_input("Username")
-                password = st.text_input("Password")
-                login_bttn = st.form_submit_button("Login")
-                employee_data = conn.read(worksheet="Employees")
-                if login_bttn:
-                    if (employee_data.get(["Username", "Password"]) == user_name).any().any():
-                        if (employee_data.get(["Username", "Password"]) == password).any().any():
-                            success = st.success("Successfully Logged In")
-                            logged_in = True
-                            time.sleep(3)
-                            success.empty()
+            user_name = st.text_input("Username")
+            password = st.text_input("Password")
+            employee_data = conn.read(worksheet="Employees")
+            if st.button("Login", key="KnittingTechLoginButton"):
+                if (employee_data.get(["Username", "Password"]) == user_name).any().any():
+                    if (employee_data.get(["Username", "Password"]) == password).any().any():
+                        success = st.success("Successfully Logged In")
+                        logged_in = True
+                        time.sleep(3)
+                        success.empty()
 
-                        else:
-                            error = st.error("Incorrect Password")
-                            time.sleep(3)
-                            error.empty()
                     else:
-                        error = st.error("Username not found")
+                        error = st.error("Incorrect Password")
                         time.sleep(3)
                         error.empty()
-            if logged_in:
-                st.write("Welcome To Tech Chat")
+                else:
+                    error = st.error("Username not found")
+                    time.sleep(3)
+                    error.empty()
 
 
         #############################################DOFF CALCULATOR#######################################################################################
