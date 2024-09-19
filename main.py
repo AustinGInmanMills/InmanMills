@@ -94,7 +94,13 @@ with tab2:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
 
                         if (employee_data.get(["Username", "Password"]) == password).any().any():
-                            st.write("Welcome AustinG")
+                            succes = st.success("Successfully Logged In")
+                            time.sleep(3)
+                            success.empty()
+                        else:
+                            error = st.error("User not found")
+                            time.sleep(3)
+                            error.empty()
 
         #############################################DOFF CALCULATOR#######################################################################################
 
