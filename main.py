@@ -88,7 +88,7 @@ with tab2:
             with st.form("TechChatLoginForm"):
                 user_name = st.text_input("Username")
                 password = st.text_input("Password")
-                login_bttn = st.form_submit_button("KnittingTechLogin")
+                login_bttn = st.form_submit_button("Login")
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
@@ -104,7 +104,7 @@ with tab2:
                         error = st.error("Username not found")
                         time.sleep(3)
                         error.empty()
-                    
+
                     st.chat_message()
                     st.chat_input()
 
