@@ -102,13 +102,12 @@ with tab2:
                         knitting_chat_db = pd.DataFrame(knitting_chat_db)
                         with st.chat_message("user"):
                             st.write(knitting_chat_db)
-                        with st.chat_message("user"):
-                            st.write(knitting_chat_db)
                         knitting_chat_input = st.chat_input(key="Knitting Chat Input")
                         if knitting_chat_input:
                             with st.chat_message("user"):
                                 st.write(knitting_chat_input)
-                                knitting_chat_db.loc[len(knitting_chat_data)] = ["Hello"]
+                            knitting_chat_db.loc[len(knitting_chat_db)] = ["Hello"]
+                            st.write(knitting_chat_db)
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
