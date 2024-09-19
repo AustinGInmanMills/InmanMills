@@ -108,7 +108,7 @@ with tab2:
                         if knitting_chat_input:
                             with st.chat_message("user"):
                                 st.write(knitting_chat_input)
-                                knitting_chat_db.loc[len(knitting_chat_db)] = ["Hello"]
+                                knitting_chat_db.loc[len(knitting_chat_data)] = ["Hello"]
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
