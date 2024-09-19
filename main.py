@@ -69,7 +69,7 @@ with tab2:
             st.dataframe(pd.DataFrame(machines_data), hide_index=True)
 
         if knitting_bttn == "Update Machine Information":
-            with st.form(key="UpdateKnittingMachineDataForm", clear_on_submit=True):
+            with st.form(key="UpdateKnittingMachineDataForm"):
                 st.caption("Double click a block to edit")
                 knitting_machine_db_update = st.data_editor(pd.DataFrame(machines_data), hide_index=True)
                 if form_submit_button("Submit"):
