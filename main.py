@@ -58,10 +58,8 @@ with tab2:
             key="KnittingBox",
         )
 
-        st.dataframe({
-            "Names": "This is just a test",
-            "Passwords": "This is just a testing app"
-        })
+        if knitting_bttn == "Machine Information":
+            st.dataframe(machines_data)
 
         st.divider()
 
