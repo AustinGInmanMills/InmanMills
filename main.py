@@ -2,6 +2,7 @@ from types import NoneType
 
 import streamlit as st
 import pandas as pd
+from streamlit import form_submit_button
 from streamlit_gsheets import GSheetsConnection
 from math import trunc
 
@@ -64,8 +65,10 @@ with tab2:
             st.dataframe(machines_data)
 
         if knitting_bttn == "Update Machine Information":
-            st.caption("Double click a block to edit")
-            knitting_machine_db_update = st.data_editor(machines_data)
+            with st.form("UpdateMachineDataForm", key="UpdateKnittingMachineDataForm", clear_on_submit=True):
+                st.caption("Double click a block to edit")
+                knitting_machine_db_update = st.data_editor(machines_data)
+                updateknittingmachinedataformbttn = form_submit_button
 
 #############################################DOFF CALCULATOR#######################################################################################
 
