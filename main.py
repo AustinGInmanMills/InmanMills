@@ -1,8 +1,9 @@
 import streamlit as st
+import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
-st.title("Read Google Sheet as DataFrame")
+
 
 conn = st.connection("gsheets",type=GSheetsConnection)
 cdf = conn.read(worksheet="Knitting Machines Data", ttl=0)
-cdf = st.dataframe(cdf, hide_index=True)
+cdf = pd.DataFrame(cdf, hide_index=True)
