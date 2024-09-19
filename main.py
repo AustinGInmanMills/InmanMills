@@ -97,20 +97,7 @@ with tab2:
                         time.sleep(3)
                         success.empty()
                         st.divider()
-                        knitting_chat_data = conn.read(worksheet="Knitting Tech Chat Data")
-                        knitting_chat_db = knitting_chat_data.get(["Chat Message"])
-                        knitting_chat_db = pd.DataFrame(knitting_chat_db)
-                        with st.chat_message("user"):
-                            st.write(knitting_chat_db)
-                        knitting_chat_input = st.chat_input(key="Knitting Chat Input")
-                        if knitting_chat_input:
-                            with st.chat_message("user"):
-                                st.write(knitting_chat_input)
-                            newdata = knitting_chat_db.copy()
-                            response = newdata.loc[len(knitting_chat_db)] = [knitting_chat_input]
-                            newdata2 = newdata
-                            st.write(knitting_chat_db)
-                            conn.update(worksheet="Knitting Tech Chat Data", data=response)
+                        
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
