@@ -92,7 +92,6 @@ with tab2:
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
-
                         if (employee_data.get(["Username", "Password"]) == password).any().any():
                             success = st.success("Successfully Logged In")
                             time.sleep(3)
@@ -101,6 +100,10 @@ with tab2:
                             error = st.error("User not found")
                             time.sleep(3)
                             error.empty()
+                else:
+                    error = st.error("User not found")
+                    time.sleep(3)
+                    error.empty()
 
         #############################################DOFF CALCULATOR#######################################################################################
 
