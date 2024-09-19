@@ -1,4 +1,6 @@
 import time
+from operator import index
+
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
@@ -96,7 +98,12 @@ with tab2:
                         time.sleep(3)
                         success.empty()
                         st.divider()
-                        
+                        tech_options = st.selectbox(
+                            "Tech Options",
+                            ("Machine Current Defect Status", "Machine Maintenance Pending", "Upload Machine Maintenance Completed"),
+                            index=None,
+                            key="KnittingTechOptions"
+                        )
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
