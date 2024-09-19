@@ -96,7 +96,8 @@ with tab2:
                         logged_in = True
                         time.sleep(3)
                         success.empty()
-                        
+                        with st.chat_message("user"):
+                            st.write("Hello 👋")
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
