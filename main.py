@@ -97,11 +97,11 @@ with tab2:
                             time.sleep(3)
                             success.empty()
                         else:
-                            error = st.error("ERROR Incorrect Password")
+                            error = st.error("Incorrect Password")
                             time.sleep(3)
                             error.empty()
                     else:
-                        error = st.error("ERROR Incorrect Username")
+                        error = st.error("Username not found")
                         time.sleep(3)
                         error.empty()
 
