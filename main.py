@@ -72,7 +72,9 @@ with tab2:
             with st.form(key="UpdateKnittingMachineDataForm", clear_on_submit=True):
                 st.caption("Double click a block to edit")
                 knitting_machine_db_update = st.data_editor(pd.DataFrame(machines_data), hide_index=True)
-                updateknittingmachinedataformbttn = form_submit_button("Submit")
+                if form_submit_button("Submit"):
+                    updating_information = knitting_machine_db_update.copy()
+                    conn.update(worksheet="Knitting Machines Data", data=updating_information)
 
 #############################################DOFF CALCULATOR#######################################################################################
 
