@@ -85,6 +85,7 @@ with tab2:
                     success.empty()  # Clear the alert
 
         if knitting_bttn == "Technician Chat":
+            st.divider()
             user_name = st.text_input("Username")
             password = st.text_input("Password")
             employee_data = conn.read(worksheet="Employees")
@@ -95,7 +96,7 @@ with tab2:
                         logged_in = True
                         time.sleep(3)
                         success.empty()
-
+                        
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
