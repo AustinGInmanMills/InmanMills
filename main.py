@@ -16,6 +16,9 @@ conn = st.connection("gsheets", type=GSheetsConnection) # Connects to gSheet con
 machines_data = conn.read(worksheet="Knitting Machines Data", ttl=0)
 machines_data = pd.DataFrame(machines_data)
 machines_data['Machine #'] = machines_data['Machine #'].astype(str)
+machines_data['Needle'] = machines_data['Needle'].astype(str)
+machines_data['Doff'] = machines_data['Doff'].astype(str)
+machines_data['Rpms'] = machines_data['Rpms'].astype(str)
 
 hide_st_style = """  
             <style>
