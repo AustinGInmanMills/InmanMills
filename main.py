@@ -15,8 +15,6 @@ st.set_page_config(
 conn = st.connection("gsheets", type=GSheetsConnection) # Connects to gSheet conn used for connect
 machines_data = conn.read(worksheet="Knitting Machines Data", ttl=0)
 machines_data = pd.DataFrame(machines_data)
-machine_db = conn.read(worksheet="Knitting Machines Data", ttl=0)
-machine_db = st.data_editor(machine_db.copy())
 
 hide_st_style = """  
             <style>
@@ -69,7 +67,7 @@ with tab2:
 
         if knitting_bttn == "Update Machine Information":
             st.caption("Double click a block to edit")
-            knitting_machine_db_update = st.data_editor(machine_db, hide_index=True)
+            knitting_machine_db_update = st.data_editor(machines_data, hide_index=True)
             with st.form(key="UpdateKnittingMachineDataForm", clear_on_submit=True):
 
                 updateknittingmachinedataformbttn = form_submit_button("Submit")
