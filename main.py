@@ -94,7 +94,7 @@ with tab2:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
 
                         if (employee_data.get(["Username", "Password"]) == password).any().any():
-                            succes = st.success("Successfully Logged In")
+                            success = st.success("Successfully Logged In")
                             time.sleep(3)
                             success.empty()
                         else:
