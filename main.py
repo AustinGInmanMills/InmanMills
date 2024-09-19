@@ -93,8 +93,8 @@ with tab2:
                 employee_data = conn.read(worksheet="Employees")
                 if login_bttn:
                     found = pd.DataFrame(employee_data.get(["Username", "Password"]))
-                    if found.isin([user_name]).any().any():
-                        st.write("WORKED")
+                    if (found == user_name).any().any():
+                        print("Value exists in the DataFrame")
                     st.write(found)
 
 #############################################DOFF CALCULATOR#######################################################################################
