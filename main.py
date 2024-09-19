@@ -62,7 +62,7 @@ with tab2:
         )
 
         if knitting_bttn == "Machine Information":
-            st.dataframe(machines_data)
+            st.data_editor(pd.DataFrame(machines_data))
 
         if knitting_bttn == "Update Machine Information":
             st.caption("Double click a block to edit")
