@@ -94,8 +94,10 @@ with tab2:
                     if (employee_data.get(["Username", "Password"]) == user_name).any().any():
                         if (employee_data.get(["Username", "Password"]) == password).any().any():
                             success = st.success("Successfully Logged In")
+                            logged_in = True
                             time.sleep(3)
                             success.empty()
+
                         else:
                             error = st.error("Incorrect Password")
                             time.sleep(3)
@@ -104,10 +106,9 @@ with tab2:
                         error = st.error("Username not found")
                         time.sleep(3)
                         error.empty()
-            messages = st.container(height=300)
-            if prompt := st.chat_input("Say something"):
-                messages.chat_message("user").write(prompt)
-                messages.chat_message("assistant").write(f"Echo: {prompt}")
+            if logged_in:
+                st.write("Welcome To Tech Chat")
+
 
         #############################################DOFF CALCULATOR#######################################################################################
 
