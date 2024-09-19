@@ -1,9 +1,6 @@
-from platform import machine
-from types import NoneType
-
+import time
 import streamlit as st
 import pandas as pd
-from streamlit import form_submit_button, rerun
 from streamlit_gsheets import GSheetsConnection
 from math import trunc
 
@@ -72,11 +69,12 @@ with tab2:
             with st.form(key="UpdateKnittingMachineDataForm"):
                 st.caption("Double click a block to edit")
                 knitting_machine_db_update = st.data_editor(pd.DataFrame(machines_data), hide_index=True)
-                if form_submit_button("Submit"):
+                if st.form_submit_button("Submit"):
                     updating_information = knitting_machine_db_update.copy()
                     conn.update(worksheet="Knitting Machines Data", data=updating_information)
-                    st.success("Information successfully updated")
-                    rerun(3)
+                    success = st.success("Information successfully updated")
+                    time.sleep(3)  # Wait for 3 seconds
+                    success.empty()  # Clear the alert
 
 #############################################DOFF CALCULATOR#######################################################################################
 
