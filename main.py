@@ -85,6 +85,16 @@ with tab2:
                     time.sleep(3)  # Wait for 3 seconds
                     success.empty()  # Clear the alert
 
+        if knitting_bttn == "Technician Chat":
+            with st.form("TechChatLoginForm"):
+                user_name = st.text_input("Username")
+                password = st.text_input("Password")
+                login_bttn = st.button("Login", key="KnittingTechLogin")
+                employee_data = conn.read(worksheet="Employees")
+                if login_bttn:
+                    found = employee_data.get(["Username", "Password"])
+                    st.write(found)
+
 #############################################DOFF CALCULATOR#######################################################################################
 
         if knitting_bttn is None:
