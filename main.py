@@ -93,7 +93,6 @@ with tab2:
                 if (employee_data.get(["Username", "Password"]) == user_name).any().any():
                     if (employee_data.get(["Username", "Password"]) == password).any().any():
                         success = st.success("Successfully Logged In")
-                        logged_in = True
                         time.sleep(3)
                         success.empty()
                         st.divider()
