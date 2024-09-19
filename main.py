@@ -7,6 +7,6 @@ st.write("Knitting Machine Database")
 conn = st.connection("gsheets",type=GSheetsConnection)
 cdf = conn.read(worksheet="Knitting Machines Data", ttl=0)
 
-ddd.st.dataframe(cdf, hide_index=True)
+ddd = st.dataframe(cdf, hide_index=True)
 
 st.write(ddd.loc[0])
