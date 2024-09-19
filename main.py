@@ -15,6 +15,7 @@ st.set_page_config(
 conn = st.connection("gsheets", type=GSheetsConnection) # Connects to gSheet conn used for connect
 machines_data = conn.read(worksheet="Knitting Machines Data", ttl=0)
 machines_data = pd.DataFrame(machines_data)
+machines_data['Machine #'] = machines_data['Machine #'].astype(str)
 
 hide_st_style = """  
             <style>
