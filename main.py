@@ -63,11 +63,10 @@ with tab2:
         if knitting_bttn == "Machine Information":
             st.dataframe(machines_data)
 
-        st.divider()
-
 #############################################DOFF CALCULATOR#######################################################################################
 
         if knitting_bttn is None:
+            st.divider()
             st.subheader("Doff Time Calculator")
 
             calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
