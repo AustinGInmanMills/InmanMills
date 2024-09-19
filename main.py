@@ -96,8 +96,10 @@ with tab2:
                         logged_in = True
                         time.sleep(3)
                         success.empty()
+                        knitting_chat = conn.read(worksheet="Knitting Tech Chat")
+                        knitting_chat = knitting_chat.loc["Chat Message"]
                         with st.chat_message("user"):
-                            st.write("Hello 👋")
+                            st.write(knitting_chat)
                     else:
                         error = st.error("Incorrect Password")
                         time.sleep(3)
