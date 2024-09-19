@@ -16,7 +16,7 @@ conn = st.connection("gsheets", type=GSheetsConnection) # Connects to gSheet con
 machines_data = conn.read(worksheet="Knitting Machines Data", ttl=0)
 machines_data = pd.DataFrame(machines_data)
 machine_db = conn.read(worksheet="Knitting Machines Data", ttl=0)
-machine_db = st.data_editor(machine_db)
+machine_db = st.data_editor(machine_db.copy())
 
 hide_st_style = """  
             <style>
