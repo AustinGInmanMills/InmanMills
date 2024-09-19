@@ -67,7 +67,7 @@ with tab2:
 
         if knitting_bttn == "Update Machine Information":
             st.caption("Double click a block to edit")
-            knitting_machine_db_update = st.data_editor(str(machines_data), hide_index=True) #need to find way to edit ints and floats values
+            knitting_machine_db_update = st.data_editor(pd.DataFrame(machines_data), hide_index=True) #need to find way to edit ints and floats values
             with st.form(key="UpdateKnittingMachineDataForm", clear_on_submit=True):
 
                 updateknittingmachinedataformbttn = form_submit_button("Submit")
