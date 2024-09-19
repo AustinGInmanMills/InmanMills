@@ -76,7 +76,7 @@ with tab2:
                     updating_information = knitting_machine_db_update.copy()
                     conn.update(worksheet="Knitting Machines Data", data=updating_information)
                     st.success("Information successfully updated")
-                    rerun()
+                    rerun(3)
 
 #############################################DOFF CALCULATOR#######################################################################################
 
