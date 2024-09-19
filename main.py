@@ -1,3 +1,5 @@
+from types import NoneType
+
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
@@ -65,7 +67,7 @@ with tab2:
 
 #############################################DOFF CALCULATOR#######################################################################################
 
-        if knitting_bttn == NoneType:
+        if knitting_bttn is None:
             st.subheader("Doff Time Calculator")
 
             calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
