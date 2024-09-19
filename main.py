@@ -97,7 +97,9 @@ with tab2:
                         time.sleep(3)
                         success.empty()
                         knitting_chat = conn.read(worksheet="Knitting Tech Chat Data")
-                        knitting_chat = knitting_chat.get(["Chat Message"]).value
+                        knitting_chat = knitting_chat.get(["Chat Message"])
+                        with st.chat_message("user"):
+                            st.write(knitting_chat)
                         with st.chat_message("user"):
                             st.write(knitting_chat)
                     else:
