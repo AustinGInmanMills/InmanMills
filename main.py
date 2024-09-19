@@ -64,7 +64,7 @@ with tab2:
             st.dataframe(machines_data)
 
         if knitting_bttn == "Update Machine Information":
-            st.markdown("Double Click To Edit")
+            st.caption("Double click a block to edit")
             knitting_machine_db_update = st.data_editor(machines_data)
 
 #############################################DOFF CALCULATOR#######################################################################################
