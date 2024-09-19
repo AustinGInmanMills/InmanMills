@@ -65,7 +65,7 @@ with tab2:
 
 #############################################DOFF CALCULATOR#######################################################################################
 
-        if knitting_bttn == "":
+        if knitting_bttn == NoneType:
             st.subheader("Doff Time Calculator")
 
             calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
