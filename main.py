@@ -100,10 +100,10 @@ with tab2:
                             error = st.error("User not found")
                             time.sleep(3)
                             error.empty()
-                else:
-                    error = st.error("User not found")
-                    time.sleep(3)
-                    error.empty()
+                    else:
+                        error = st.error("User not found")
+                        time.sleep(3)
+                        error.empty()
 
         #############################################DOFF CALCULATOR#######################################################################################
 
