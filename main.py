@@ -8,3 +8,5 @@ conn = st.connection("gsheets",type=GSheetsConnection)
 cdf = conn.read(worksheet="Knitting Machines Data", ttl=0)
 
 st.dataframe(cdf, hide_index=True)
+
+st.write(cdf.loc[0])
