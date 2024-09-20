@@ -53,6 +53,7 @@ if submit and email == actual_email and password == actual_password:
     # clear the form/container and display a success message
     placeholder.empty()
     st.success("Login successful")
+    page="login"
 elif submit and email != actual_email and password != actual_password:
     st.error("Login failed")
 else:
