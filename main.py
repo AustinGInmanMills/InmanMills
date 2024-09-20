@@ -74,4 +74,3 @@ with tab2:
         
         if knitting_bttn == "Operator":
             @st.dialog("Login")
-            
