@@ -65,7 +65,7 @@ with tab2:
         
         
         
-elif department_options_bttn == "Ring Spinning":
+    elif department_options_bttn == "Ring Spinning":
         ring_spinning_bttn = st.selectbox(
             "Ring Spinning Department Options",
             ("Machine Information", "Update Machine Information", "Technician Chat"),
