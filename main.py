@@ -78,5 +78,5 @@ test_data = pd.DataFrame({
 
 test_data_copy = st.dataframe(test_data)
 
-for x in test_data:
-    st.write(x.loc[1])
+for x in test_data.loc[]:
+    st.write(x)
