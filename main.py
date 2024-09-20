@@ -81,7 +81,7 @@ with tab2:
             # Insert a form in the container
             with placeholder.form("login"):
                 st.markdown("#### Enter your credentials")
-                email = st.text_input("Email")
+                email = st.text_input("Username")
                 password = st.text_input("Password", type="password")
                 submit = st.form_submit_button("Login")
 
