@@ -67,7 +67,7 @@ with tab2:
     if department_options_bttn == "Knitting":
         knitting_bttn = st.selectbox(
             "Knitting Department Options",
-            ("Machine Information", "Update Machine Information", "Technician Chat"),
+            ("Machine Information", "Update Machine Information", "Technician Options"),
             index=None,
             key="KnittingBox",
         )
