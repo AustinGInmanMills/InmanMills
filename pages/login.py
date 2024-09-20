@@ -45,12 +45,4 @@ tab1, tab2, tab3 = st.tabs(["Home", "Department", "Information"])
 
 with tab1:
     st.markdown(
-        "Welcome to Inman Mills Saybrook Plant new Employee website! You can view information about up coming layoffs, overtime, departments and much more")
-
-with tab2:
-    department_options_bttn = st.selectbox(
-        "Department Options",
-        ("Home", "Machine Information", "),
-        index=None,
-        key="DepartmentBox"
-    )
+        "Welcome to Inman Mills Saybrook Plant new Employee website! Logged in as Tech.")
