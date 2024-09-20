@@ -62,21 +62,21 @@ with tab2:
             key="KnittingBox",
         )
         
-    if knitting_bttn is None:
-        st.divider()
-        st.subheader("Doff Time Calculator")
+        if knitting_bttn is None:
+            st.divider()
+            st.subheader("Doff Time Calculator")
 
-        calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
+            calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
                                                         placeholder="")
 
-        calculator_machine_revs = st.number_input("Current Revs", value=None, min_value=0, max_value=5000,
+            calculator_machine_revs = st.number_input("Current Revs", value=None, min_value=0, max_value=5000,
                                                       placeholder="")
 
-        calculator_bttn = st.button("Calculate")
+            calculator_bttn = st.button("Calculate")
 
-        if calculator_bttn:
-            if calculator_machine_number is not None and calculator_machine_revs is not None:
-                st.write("not added yet")
+            if calculator_bttn:
+                if calculator_machine_number is not None and calculator_machine_revs is not None:
+                    st.write("not added yet")
 
         
         
