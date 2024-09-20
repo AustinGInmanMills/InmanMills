@@ -72,3 +72,10 @@ with tab2:
                 if calculator_machine_number is not None and calculator_machine_revs is not None:
                     st.write("not added yet")
         
+        if knitting_bttn == "Operator":
+            def vote(item):
+                st.write(f"Why is {item} your favorite?")
+                reason = st.text_input("Because...")
+                if st.button("Submit"):
+                    st.session_state.vote = {"item": item, "reason": reason}
+                    st.rerun()
