@@ -82,4 +82,4 @@ for x in test_data.loc[0]:
     st.write(x)
     
 if test_data.loc[0] == ["1", "Austin"]
-    st.write("Austin is on Machine 1)
+    st.write("Austin is on Machine 1")
