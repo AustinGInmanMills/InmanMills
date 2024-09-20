@@ -14,7 +14,7 @@ with placeholder.form("login"):
     st.markdown("#### Enter your credentials")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    col1, col2 = st.columns([1, 8])
+    col1, col2 = st.columns([1, 6])
     with col1:
         submit = st.form_submit_button("Login")
     with col2:
@@ -32,6 +32,9 @@ if submit:
 
             elif row['Position'] == "Knitting Doffer":
                 st.switch_page('pages/Knitting Doffer Page.py')
+                
+            elif row['Position'] == "Knitting Tech":
+                st.switch_page('pages/Knitting Tech Page.py')
 
             elif row['Position'] == "Knitting Over Hauler":
                 st.switch_page('pages/Knitting Over Hauler Page.py')
