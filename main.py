@@ -80,3 +80,5 @@ test_data_copy = st.dataframe(test_data)
 
 for x in test_data.loc[0]:
     st.write(x)
+    
+if test_data.loc[0] == ["1", "Austin"]
