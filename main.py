@@ -77,3 +77,6 @@ test_data = pd.DataFrame({
 })
 
 st.dataframe(test_data)
+
+for x in test_data:
+    st.write(x)
