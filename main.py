@@ -61,24 +61,11 @@ with tab2:
             index=None,
             key="KnittingBox",
         )
-
-        #############################################DOFF CALCULATOR#######################################################################################
-
-     if knitting_bttn is None:
-         st.divider()
-         st.subheader("Doff Time Calculator")
-
-         calculator_machine_number = st.number_input("Machine Number ", value=None, min_value=0, max_value=21,
-                                              placeholder="")
-
-         calculator_machine_revs = st.number_input("Current Revs", value=None, min_value=0, max_value=5000,
-                                                      placeholder="")
-
-         calculator_bttn = st.button("Calculate")
-
-    #############################################END CALCULATOR######################################################################################################
-
-    elif department_options_bttn == "Ring Spinning":
+        
+        
+        
+        
+elif department_options_bttn == "Ring Spinning":
         ring_spinning_bttn = st.selectbox(
             "Ring Spinning Department Options",
             ("Machine Information", "Update Machine Information", "Technician Chat"),
