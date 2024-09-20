@@ -77,30 +77,3 @@ with tab2:
             if calculator_bttn:
                 if calculator_machine_number is not None and calculator_machine_revs is not None:
                     st.write("not added yet")
-
-        
-        
-        
-    elif department_options_bttn == "Ring Spinning":
-        ring_spinning_bttn = st.selectbox(
-            "Ring Spinning Department Options",
-            ("Machine Information", "Update Machine Information", "Technician Chat"),
-            index=None,
-            key="RingSpinningBox"
-        )
-
-    elif department_options_bttn == "Winding":
-        winding_btnn = st.selectbox(
-            "Winding Department Options",
-            ("Machine Information", "Update Machine Information", "Technician Chat"),
-            index=None,
-            key="WindingBox"
-        )
-
-    elif department_options_bttn == "Roven":
-        roven_bttn = st.selectbox(
-            "Roven Department Options",
-            ("Machine Information", "Update Machine Information", "Technician Chat"),
-            index=None,
-            key="RovenBox"
-        )
