@@ -1,10 +1,4 @@
-import time
-from operator import index
-
 import streamlit as st
-import pandas as pd
-from streamlit_gsheets import GSheetsConnection
-from math import trunc
 
 st.set_page_config(
     page_title="Inman Mills Saybrook",
