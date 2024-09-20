@@ -56,6 +56,7 @@ if submit and email == actual_email and password == actual_password:
     success = st.success("Login successful")
     time.sleep(2)
     success.empty()
+    st.switch_page("login.py")
 elif submit and email != actual_email and password != actual_password:
     st.error("Login failed")
 else:
