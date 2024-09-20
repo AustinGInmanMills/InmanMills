@@ -41,13 +41,6 @@ st.markdown(
 )
 
 
-
-
-
-
-
-
-
 tab1, tab2, tab3 = st.tabs(["Home", "Departments", "Information"])
 
 with tab1:
