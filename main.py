@@ -76,7 +76,7 @@ test_data = pd.DataFrame({
     "Operators": ["Austin","Jeff","Kelly"]
 })
 
-test_data_copy = st.dataframe(test_data.loc[0])
+test_data_copy = st.dataframe(test_data)
 
-for x in test_data:
+for x in test_data_copy.loc[0]:
     st.write(x)
