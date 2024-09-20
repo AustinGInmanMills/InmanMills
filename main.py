@@ -86,7 +86,7 @@ with tab2:
                     time.sleep(3)  # Wait for 3 seconds
                     success.empty()  # Clear the alert
 
-        if knitting_bttn == "Technician Chat":
+        if knitting_bttn == "Technician Options":
             st.divider()
             user_name = st.text_input("Username")
             password = st.text_input("Password")
