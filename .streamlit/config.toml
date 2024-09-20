@@ -9,4 +9,4 @@ font = "sans serif"
 hideTopBar = true
 
 [client]
-showSidebarNavigation = false
+showSidebarNavigation = true
