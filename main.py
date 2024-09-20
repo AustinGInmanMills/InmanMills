@@ -74,3 +74,8 @@ with tab2:
         
         if knitting_bttn == "Operator":
             @st.dialog("Login")
+            def login_form():
+                st.caption("Username")
+                username = st.text_input()
+                st.caption("Password")
+                password = st.text_input()
