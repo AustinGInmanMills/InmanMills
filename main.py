@@ -92,8 +92,8 @@ with tab2:
             password = st.text_input("Password")
             employee_data = conn.read(worksheet="Employees")
             if st.button("Login", key="KnittingTechLoginButton"):
-                if (employee_data.get(["Username", "Password"]) == user_name).any().any():
-                    if (employee_data.get(["Username", "Password"]) == password).any().any():
+                if (employee_data.get(["Username"]) == user_name).any().any():
+                    if (employee_data.get(["Password"]) == password).any().any():
                         success = st.success("Successfully Logged In")
                         time.sleep(3)
                         success.empty()
