@@ -74,9 +74,4 @@ with tab2:
         
         if knitting_bttn == "Operator":
             @st.dialog("Login")
-            def vote(item):
-                st.write("Username")
-                reason = st.text_input()
-                if st.button("Submit"):
-                    st.session_state.vote = {"item": item, "reason": reason}
-                    st.rerun()
+            
