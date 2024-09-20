@@ -73,9 +73,10 @@ with tab2:
                     st.write("not added yet")
         
         if knitting_bttn == "Operator":
+            @st.dialog("Login")
             def vote(item):
-                st.write(f"Why is {item} your favorite?")
-                reason = st.text_input("Because...")
+                st.write("Username")
+                reason = st.text_input()
                 if st.button("Submit"):
                     st.session_state.vote = {"item": item, "reason": reason}
                     st.rerun()
