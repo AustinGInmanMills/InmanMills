@@ -41,7 +41,7 @@ st.markdown(
 )
 #################################################
 
-tab1, tab2, tab3 = st.tabs(["Home", "Departments", "Information")
+tab1, tab2, tab3 = st.tabs(["Home", "Departments", "Information"])
 
 with tab1:
     st.markdown(
