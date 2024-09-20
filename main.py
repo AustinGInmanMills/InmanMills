@@ -76,25 +76,7 @@ with tab2:
 
         if calculator_bttn:
             if calculator_machine_number is not None and calculator_machine_revs is not None:
-                calculator_machine_entered_rpms = machines_data.loc[int(calculator_machine_number), "Rpms"]
-                calculator_machine_entered_doff = machines_data.loc[int(calculator_machine_number), "Doff"]
-                sum = calculator_machine_entered_doff - calculator_machine_revs
-                sum = sum / calculator_machine_entered_rpms
-                if sum > 60:
-                    sum = sum / 60
-                    number_dec1 = trunc(sum)
-                    number_dec2 = str(sum - int(sum))[1:]
-                    minutes_calc = float(number_dec2) * 60
-                    minutes_calc = trunc(minutes_calc)
-                    calculation = str(sum)
-                    st.write(str(number_dec1), "hour and", str(minutes_calc), "minutes left")
-                else:
-                    number_dec1 = trunc(sum)
-                    number_dec2 = str(sum - int(sum))[1:]
-                    minutes_calc = float(number_dec2) * 60
-                    minutes_calc = trunc(minutes_calc)
-                    calculation = str(sum)
-                    st.write(str(number_dec1), "minutes and", str(minutes_calc), "seconds left")
+                st.write("not added yet")
 
         
         
