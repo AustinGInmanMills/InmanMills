@@ -90,6 +90,7 @@ with tab2:
                 # clear the form/container and display a success message
                 placeholder.empty()
                 st.success("Login successful")
+                rerun()
             elif submit and email != actual_email and password != actual_password:
                 st.error("Login failed")
             else:
