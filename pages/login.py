@@ -3,8 +3,6 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import time
 
-from pages.create import success
-
 conn = st.connection("gsheets", type=GSheetsConnection)  # Connects to gSheet conn used for connect
 employee_data = conn.read(worksheet="Employees Login", ttl=0)
 employee_data = pd.DataFrame(employee_data)
