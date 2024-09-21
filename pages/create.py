@@ -26,7 +26,7 @@ with placeholder.form("Create"):
     with col1:
         register = st.form_submit_button("Create Account")
     with col2:
-        back = st.form_submit_button("Back")
+        back = st.form_submit_button("Cancel")
     if back:
         st.switch_page("pages/login.py")
     if register:
