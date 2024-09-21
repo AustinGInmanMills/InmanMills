@@ -22,7 +22,13 @@ with placeholder.form("Create"):
     password = st.text_input("Password", key="Create Account Password")
     employee_id = st.text_input("Employee ID", key="EmployeeID")
     registration_code = st.text_input("Registration Code", key="RegistrationCode")
-    register = st.form_submit_button("Create Account")
+    col1, col2 = st.columns([1, 4])
+    with col1:
+        register = st.form_submit_button("Create Account")
+    with col2:
+        back = st.form_submit_button("Back")
+    if back:
+        st.switch_page("pages/login.py")
     if register:
         if registration_code == "Saybrook Plant":
             if employee_id in employee_information.values:
