@@ -4,7 +4,6 @@ from streamlit import success
 from streamlit_gsheets import GSheetsConnection
 import time
 
-
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 
