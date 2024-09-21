@@ -4,9 +4,9 @@ from streamlit_gsheets import GSheetsConnection
 import time
 
 conn = st.connection("gsheets", type=GSheetsConnection)  # Connects to gSheet conn used for connect
-employee_data = conn.read(worksheet="Employees Login", ttl=0)
+employee_data = conn.read(worksheet="Employees Login", ttl="60s")
 employee_data = pd.DataFrame(employee_data)
-employee_name = conn.read(worksheet="Employees Data", ttl=0)
+employee_name = conn.read(worksheet="Employees Data", ttl="120s")
 employee_name = pd.DataFrame(employee_name)
 
 placeholder = st.empty()
@@ -37,6 +37,7 @@ if submit:
                 if rows["Employee ID"] == row["EmployeeID"]:
                     #if 'Name' not in st.session_state:
                     st.session_state['Name'] = str(rows["First Name"])
+                    st.session_state['Shift'] = str(rows["Shift"])
 
                     success_login = st.success("Login Successful Loading...")
                     time.sleep(2)
