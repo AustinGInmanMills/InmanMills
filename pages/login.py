@@ -5,7 +5,7 @@ from streamlit_gsheets import GSheetsConnection
 import time
 
 conn = st.connection("gsheets", type=GSheetsConnection)  # Connects to gSheet conn used for connect
-employee_data = conn.read(worksheet="Employees", ttl=0)
+employee_data = conn.read(worksheet="Employees Login", ttl=0)
 employee_data = pd.DataFrame(employee_data)
 
 placeholder = st.empty()
@@ -32,7 +32,7 @@ if submit:
 
             elif row['Position'] == "Knitting Doffer":
                 st.switch_page('pages/Knitting Doffer Page.py')
-                
+
             elif row['Position'] == "Knitting Tech":
                 st.switch_page('pages/Knitting Tech Page.py')
 
