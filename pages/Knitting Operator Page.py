@@ -50,7 +50,7 @@ with tab1:
         )
         submit = st.form_submit_button("Submit")
         if submit:
-            machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [defect_time, defect_type]
+            machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, defect_time, defect_type]
             conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
             success_defect_update_1 = st.success("Successfully Submitted")
             time.sleep(2)
@@ -142,7 +142,7 @@ with tab2:
         if submit:
             if not defect_time is None:
                 if not defect_type is None:
-                    machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [defect_time, defect_type]
+                    machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, defect_time, defect_type]
                     conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
                     success_defect_update_2 = st.success("Successfully Submitted")
                     time.sleep(2)
