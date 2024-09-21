@@ -7,8 +7,8 @@ import time
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 
-employee_data = conn.read(worksheet="Employees Login", ttl=0)
-employee_information = conn.read(worksheet="Employees Data", ttl=0)
+employee_data = conn.read(worksheet="Employees Login", ttl="120s")
+employee_information = conn.read(worksheet="Employees Data", ttl="120s")
 employee_data = pd.DataFrame(employee_data)
 employee_information = pd.DataFrame(employee_information)
 
