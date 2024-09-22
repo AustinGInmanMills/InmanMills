@@ -15,7 +15,7 @@ if not "Name" in st.session_state:
     st.switch_page("pages/login.py")
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-position = conn.read(worksheet="Knitting Positions", ttl="10s")
+position = conn.read(worksheet="Knitting Positions", ttl="35s")
 position = pd.DataFrame(position)
 
 for x, row in position.iterrows():
