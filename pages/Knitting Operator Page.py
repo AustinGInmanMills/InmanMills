@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
-from datetime import *
-from datetime import date
 import time
+from datetime import datetime
+from datetime import date
+#from time import gmtime, strftime
+
 
 today = str(date.today())
-current_time = datetime.now().strftime("%I:%M %p")
+now = datetime.now()
+current_time = now.strftime("%I:%M %p")
 
 if not "Name" in st.session_state:
     st.switch_page("pages/login.py")
