@@ -4,7 +4,7 @@ from streamlit_gsheets import GSheetsConnection
 import time
 from datetime import datetime
 from datetime import date
-#from time import gmtime, strftime
+from time import gmtime, strftime
 
 
 today = str(date.today())
