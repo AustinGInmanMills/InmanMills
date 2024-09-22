@@ -4,11 +4,11 @@ from streamlit_gsheets import GSheetsConnection
 import time
 from datetime import datetime
 from datetime import date
-from time import gmtime, strftime
+import pytz
 
 
 today = str(date.today())
-now = datetime.now()
+now = datetime.now(tz=pytz.timezone('US/Eastern'))
 current_time = now.strftime("%I:%M %p")
 
 if not "Name" in st.session_state:
