@@ -9,9 +9,11 @@ import pytz
 if "name" not in st.session_state:
     name = str(st.query_params.name)
     username = str(st.query_params.username)
+    shift = str(st.query_params.shift)
 else:
     name = str(st.session_state.name)
     username = str(st.session_state.username)
+    shift = str(st.session_state.shift)
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
@@ -53,7 +55,7 @@ with tab1:
         )
         submit = st.form_submit_button("Submit")
         if submit:
-            machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "-", defect_time, defect_type]
+            machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "-", defect_time, defect_type]
             conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
             success_defect_update_1 = st.success("Successfully Submitted")
             time.sleep(2)
@@ -73,13 +75,13 @@ with tab1:
                         error_cant_start = error_cant_start.empty()
                         break
                     else:
-                        machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Start", "-", "-"]
+                        machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
                         success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
             else:
-                machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Start", "-", "-"]
+                machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
                 success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                 time.sleep(2)
@@ -97,13 +99,13 @@ with tab1:
                         error_cant_start = error_cant_start.empty()
                         break
                     else:
-                        machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Doff", "-", "-"]
+                        machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
                         success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
             else:
-                machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Doff", "-", "-"]
+                machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
                 success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                 time.sleep(2)
@@ -121,7 +123,7 @@ with tab2:
         )
         submit = st.form_submit_button("Submit")
         if submit:
-            machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "-", defect_time, defect_type]
+            machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "-", defect_time, defect_type]
             conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
             success_defect_update_2 = st.success("Successfully Submitted")
             time.sleep(2)
@@ -141,13 +143,13 @@ with tab2:
                         error_cant_start2 = error_cant_start2.empty()
                         break
                     else:
-                        machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Start", "-", "-"]
+                        machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
                         success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
             else:
-                machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Start", "-", "-"]
+                machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
                 success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                 time.sleep(2)
@@ -165,13 +167,13 @@ with tab2:
                         error_cant_start2 = error_cant_start2.empty()
                         break
                     else:
-                        machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Doff", "-", "-"]
+                        machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
                         success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
             else:
-                machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [st.session_state.Name, st.session_state.Shift, today, current_time, "Doff", "-", "-"]
+                machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
                 success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                 time.sleep(2)
