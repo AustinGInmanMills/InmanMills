@@ -10,7 +10,6 @@ import pytz
 
 if "name" not in st.session_state:
     name = str(st.query_params.name)
-    st.write(name)
 else:
     name = str(st.session_state.name)
 
