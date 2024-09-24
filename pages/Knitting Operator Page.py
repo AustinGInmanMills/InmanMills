@@ -13,7 +13,6 @@ else:
     name = str(st.session_state.name)
     username = str(st.session_state.username)
 
-
 conn = st.connection("gsheets", type=GSheetsConnection)
 employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
 employee_login_status = pd.DataFrame(employee_login_status)
@@ -23,10 +22,6 @@ for sd, rowzs in employee_login_status.iterrows():
         if rowzs["Status"] != "Online":
             st.switch_page("pages/login.py")
 
-
-
-
-#conn = st.connection("gsheets", type=GSheetsConnection)
 position = conn.read(worksheet="Knitting Positions", ttl="35s")
 position = pd.DataFrame(position)
 
@@ -44,11 +39,7 @@ today = str(date.today())
 now = datetime.now(tz=pytz.timezone('US/Eastern'))
 current_time = now.strftime("%I:%M %p")
 
-
-
 tab1, tab2, tab3 = st.tabs([f"Machine {machine_1}", f"Machine {machine_2}", "Schedule Information"])
-
-
 
 with tab1:
     with st.form("Machine 1", clear_on_submit=True):
@@ -118,8 +109,6 @@ with tab1:
                 time.sleep(2)
                 success_new_roll_submit = success_new_roll_submit.empty()
 
-
-
 with tab2:
     with st.form("Machine 2", clear_on_submit=True):
         st.write(f"Machine {machine_2} Defect Log ")
@@ -187,6 +176,7 @@ with tab2:
                 success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                 time.sleep(2)
                 success_new_roll_submit2 = success_new_roll_submit2.empty()
+                
 sign_out = st.button("Sign out")
 if sign_out:
     for sf, sows in employee_login_status.iterrows():
