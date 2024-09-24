@@ -27,7 +27,7 @@ if submit:
     employee_data = pd.DataFrame(employee_data)
     employee_name = conn.read(worksheet="Employees Data", ttl="120s")
     employee_name = pd.DataFrame(employee_name)
-    
+
     if not username in employee_data.values or not password in employee_data.values:
         error_user_not_found = st.error("Incorrect Username/Password")
         time.sleep(3)
@@ -43,6 +43,8 @@ if submit:
                     st.query_params.username = row["Username"]
                     st.session_state.name = str(rows["First Name"])
                     st.query_params.name = str(rows["First Name"])
+                    st.session_state.shift = str(rows["Shift"])
+                    st.query_params.shift = str(rows["Shift"])
                     success_login = st.success("Login Successful Loading...")
                     time.sleep(2)
                     success_login = success_login.empty()
