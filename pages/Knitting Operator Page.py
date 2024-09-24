@@ -12,7 +12,7 @@ position = conn.read(worksheet="Knitting Positions", ttl="35s")
 position = pd.DataFrame(position)
 
 for x, row in position.iterrows():
-    if row["Operator"] == st.query.name
+    if row["Operator"] == st.query_params.name
         machine_1 = row["Machine 1"]
         machine_2 = row["Machine 2"]
 
