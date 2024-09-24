@@ -10,14 +10,24 @@ import pytz
 
 if "name" not in st.session_state:
     name = str(st.query_params.name)
+    username = str(st.query_params.username)
 else:
     name = str(st.session_state.name)
-
-
-
-
+    username = str(st.session_state.username)
+    
 
 conn = st.connection("gsheets", type=GSheetsConnection)
+employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
+
+for sd, rowzs in employee_login_status.iterrows():
+    if rowzs["Username"] == username:
+        if rowzs["Status"] != "Online":
+            st.switch_page("pages/login.py")
+
+
+
+
+#conn = st.connection("gsheets", type=GSheetsConnection)
 position = conn.read(worksheet="Knitting Positions", ttl="35s")
 position = pd.DataFrame(position)
 
