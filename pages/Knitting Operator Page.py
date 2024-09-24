@@ -6,15 +6,13 @@ from datetime import datetime
 from datetime import date
 import pytz
 
-if not "Name" in st.session_state:
-    st.switch_page("pages/login.py")
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 position = conn.read(worksheet="Knitting Positions", ttl="35s")
 position = pd.DataFrame(position)
 
 for x, row in position.iterrows():
-    if row["Operator"] == st.session_state.Name:
+    if row["Operator"] == st.query.name
         machine_1 = row["Machine 1"]
         machine_2 = row["Machine 2"]
 
