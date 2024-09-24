@@ -35,7 +35,22 @@ if submit:
         if row['Username'] == username and row["Password"] == password:
             for i, rows in employee_name.iterrows():
                 if rows["Employee ID"] == row["EmployeeID"]:
-                    #if 'Name' not in st.session_state:
+                    
+                    
+                    
+                    row["Status"] = "Online"
+                    conn.update(worksheet="Employees Login", data=employee_data)
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     st.session_state.name = str(rows["First Name"])
                     st.query_params.name = str(rows["First Name"])
 
