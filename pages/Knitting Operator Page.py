@@ -29,11 +29,11 @@ for x, row in position.iterrows():
     if row["Operator"] == name:
         machine_1 = row["Machine 1"]
         machine_2 = row["Machine 2"]
+        machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
+        machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
+        machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s")
+        machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
 
-machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
-machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
-machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s")
-machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
 
 today = str(date.today())
 now = datetime.now(tz=pytz.timezone('US/Eastern'))
@@ -176,7 +176,7 @@ with tab2:
                 success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                 time.sleep(2)
                 success_new_roll_submit2 = success_new_roll_submit2.empty()
-                
+
 sign_out = st.button("Sign out")
 if sign_out:
     for sf, sows in employee_login_status.iterrows():
