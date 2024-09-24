@@ -31,10 +31,8 @@ for x, row in position.iterrows():
     if row["Operator"] == name:
         machine_1 = row["Machine 1"]
         machine_2 = row["Machine 2"]
-        machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="2s")
-        machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
-        machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="2s")
-        machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
+
+
 
 
 today = str(date.today())
@@ -55,6 +53,8 @@ with tab1:
         )
         submit = st.form_submit_button("Submit")
         if submit:
+            machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
+            machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
             machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "-", defect_time, defect_type]
             conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
             success_defect_update_1 = st.success("Successfully Submitted")
@@ -65,6 +65,8 @@ with tab1:
         st.write(f"Machine {machine_1} Doff Log")
         start_roll = st.form_submit_button("Start Roll")
         if start_roll:
+            machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
+            machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
             if "Start" in machine_1_flags_data.values:
                 for index, row in machine_1_flags_data[::-1].iterrows():
                     if row["Start/Doff"] == "-":
@@ -80,6 +82,7 @@ with tab1:
                         success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
+                        break
             else:
                 machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
@@ -89,6 +92,8 @@ with tab1:
 
         end_roll = st.form_submit_button("Doff Roll")
         if end_roll:
+            machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
+            machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
             if "Doff" in machine_1_flags_data.values:
                 for index, row in machine_1_flags_data[::-1].iterrows():
                     if row["Start/Doff"] == "-":
@@ -104,6 +109,7 @@ with tab1:
                         success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
+                        break
             else:
                 machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
@@ -123,6 +129,8 @@ with tab2:
         )
         submit = st.form_submit_button("Submit")
         if submit:
+            machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s")
+            machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
             machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "-", defect_time, defect_type]
             conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
             success_defect_update_2 = st.success("Successfully Submitted")
@@ -133,6 +141,8 @@ with tab2:
         st.write(f"Machine {machine_2} Doff Log")
         start_roll = st.form_submit_button("Start Roll")
         if start_roll:
+            machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s") 
+            machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
             if "Start" in machine_2_flags_data.values:
                 for index, row in machine_2_flags_data[::-1].iterrows():
                     if row["Start/Doff"] == "-":
@@ -148,6 +158,7 @@ with tab2:
                         success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
+                        break
             else:
                 machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Start", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
@@ -157,6 +168,8 @@ with tab2:
 
         end_roll = st.form_submit_button("Doff Roll")
         if end_roll:
+            machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s") 
+            machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
             if "Doff" in machine_2_flags_data.values:
                 for index, row in machine_2_flags_data[::-1].iterrows():
                     if row["Start/Doff"] == "-":
@@ -172,6 +185,7 @@ with tab2:
                         success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
+                        break
             else:
                 machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
