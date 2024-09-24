@@ -6,7 +6,7 @@ from datetime import datetime
 from datetime import date
 import pytz
 
-
+from pages.login import employee_data
 
 if "name" not in st.session_state:
     name = str(st.query_params.name)
@@ -14,10 +14,11 @@ if "name" not in st.session_state:
 else:
     name = str(st.session_state.name)
     username = str(st.session_state.username)
-    
+
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
+employee_login_status = pd.DataFrame(employee_login_status)
 
 for sd, rowzs in employee_login_status.iterrows():
     if rowzs["Username"] == username:
@@ -188,3 +189,14 @@ with tab2:
                 success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                 time.sleep(2)
                 success_new_roll_submit2 = success_new_roll_submit2.empty()
+sign_out = st.button("Sign out")
+if sign_out:
+    for sf, sows in employee_login_status.iterrows():
+        if sows["Username"] == username:
+            if sows["Status"] == "Online":
+                sows["Status"] = "Offline"
+                conn.update(worksheet="Employees Login", data=employee_login_status)
+                st.session_state.clear()
+                st.query_params.clear()
+                time.sleep(0.5)
+                st.switch_page("pages/login.py")
