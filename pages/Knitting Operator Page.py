@@ -5,8 +5,15 @@ import time
 from datetime import datetime
 from datetime import date
 import pytz
+import threading
 
-from pages.login import employee_data
+def my_long_function():
+    while 1:
+        time.sleep(10)
+        st.rerun()
+
+long_thread = threading.Thread(target=my_long_function)
+long_thread.start()
 
 if "name" not in st.session_state:
     name = str(st.query_params.name)
