@@ -36,8 +36,7 @@ if submit:
             for i, rows in employee_name.iterrows():
                 if rows["Employee ID"] == row["EmployeeID"]:
                     #if 'Name' not in st.session_state:
-                    #st.session_state['Name'] = str(rows["First Name"])
-                    #st.session_state['Shift'] = str(rows["Shift"])
+                    st.session_state['Name'] = str(rows["First Name"])
                     st.query_params.name = str(rows["First Name"])
 
                     success_login = st.success("Login Successful Loading...")
