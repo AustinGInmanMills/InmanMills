@@ -31,9 +31,9 @@ for x, row in position.iterrows():
     if row["Operator"] == name:
         machine_1 = row["Machine 1"]
         machine_2 = row["Machine 2"]
-        machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s")
+        machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="2s")
         machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
-        machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s")
+        machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="2s")
         machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
 
 
