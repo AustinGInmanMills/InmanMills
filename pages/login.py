@@ -39,7 +39,6 @@ if submit:
                     #st.session_state['Name'] = str(rows["First Name"])
                     #st.session_state['Shift'] = str(rows["Shift"])
                     st.query_params.name = str(rows["First Name"])
-                    st.query_params.shift = str(rows["Shift"])
 
                     success_login = st.success("Login Successful Loading...")
                     time.sleep(2)
