@@ -1,2 +1,3 @@
 streamlit
 st-gsheets-connection
+streamlit_js_eval
