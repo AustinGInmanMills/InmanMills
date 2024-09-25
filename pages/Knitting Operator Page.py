@@ -5,11 +5,8 @@ import time
 from datetime import datetime
 from datetime import date
 import pytz
-
 from streamlit_js_eval import streamlit_js_eval
 
-if st.button("Reload page"):
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 
 if "name" not in st.session_state:
     if "name" in st.query_params:
@@ -17,7 +14,7 @@ if "name" not in st.session_state:
         username = str(st.query_params.username)
         shift = str(st.query_params.shift)
     else:
-        st.rerun()
+        streamlit_js_eval(js_expressions="parent.window.location.reload()")
 else:
     name = str(st.session_state.name)
     username = str(st.session_state.username)
