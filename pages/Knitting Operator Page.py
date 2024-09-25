@@ -111,14 +111,14 @@ with tab1:
                     else:
                         machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
-                        success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
+                        success_new_roll_submit = st.success(f"Successfully Doffed Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
                         break
             else:
                 machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
-                success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
+                success_new_roll_submit = st.success(f"Successfully Doffed Roll On Machine {machine_1}")
                 time.sleep(2)
                 success_new_roll_submit = success_new_roll_submit.empty()
 
@@ -187,14 +187,14 @@ with tab2:
                     else:
                         machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                         conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
-                        success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
+                        success_new_roll_submit2 = st.success(f"Successfully Doffed Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
                         break
             else:
                 machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "Doff", "-", "-"]
                 conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
-                success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
+                success_new_roll_submit2 = st.success(f"Successfully Doffed Roll On Machine {machine_2}")
                 time.sleep(2)
                 success_new_roll_submit2 = success_new_roll_submit2.empty()
 
