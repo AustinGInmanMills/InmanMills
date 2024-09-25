@@ -10,3 +10,6 @@ hideTopBar = true
 
 [client]
 showSidebarNavigation = false
+
+[server]
+  timeout = 28800  # Timeout in seconds (e.g., 30 minutes)
