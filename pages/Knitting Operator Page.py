@@ -7,9 +7,12 @@ from datetime import date
 import pytz
 
 if "name" not in st.session_state:
-    name = str(st.query_params.name)
-    username = str(st.query_params.username)
-    shift = str(st.query_params.shift)
+    if "name" in st.query_params:
+        name = str(st.query_params.name)
+        username = str(st.query_params.username)
+        shift = str(st.query_params.shift)
+    else:
+        st.rerun()
 else:
     name = str(st.session_state.name)
     username = str(st.session_state.username)
