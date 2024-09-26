@@ -67,15 +67,22 @@ try:
             submit = st.form_submit_button("Submit")
             if submit:
                 try:
-                    machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s",
-                                                     max_entries= 200)
-                    machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
-                    machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "-",
-                                                                                 defect_type]
-                    conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
-                    success_defect_update_1 = st.success("Successfully Submitted")
-                    time.sleep(2)
-                    success_defect_update_1 = success_defect_update_1.empty()
+                    if defect_type is not None:
+                        machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet",
+                                                         ttl="35s",
+                                                         max_entries=200)
+                        machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
+                        machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time,
+                                                                                     "-",
+                                                                                     defect_type]
+                        conn.update(worksheet=f"Knitting Machine {machine_1} Flag Sheet", data=machine_1_flags_data)
+                        success_defect_update_1 = st.success("Successfully Submitted")
+                        time.sleep(2)
+                        success_defect_update_1 = success_defect_update_1.empty()
+                    else:
+                        error_no_selection = st.error("Defect Not Selected")
+                        time.sleep(2)
+                        error_no_selection.empty()
                 except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
