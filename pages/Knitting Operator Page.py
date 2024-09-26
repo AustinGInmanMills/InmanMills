@@ -16,6 +16,10 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
+today = str(date.today())
+now = datetime.now(tz=pytz.timezone('US/Eastern'))
+current_time = now.strftime("%I:%M %p")
+
 if "name" in st.session_state:
     name = st.session_state.name
     username = st.session_state.username
@@ -28,33 +32,33 @@ else:
     username = st.query_params.username
     shift = st.query_params.shift
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
-employee_login_status = pd.DataFrame(employee_login_status)
+try:
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
+    employee_login_status = pd.DataFrame(employee_login_status)
 
-for sd, rowzs in employee_login_status.iterrows():
-    if rowzs["Username"] == username:
-        if rowzs["Status"] != "Online":
-            st.switch_page("pages/login.py")
+    for sd, rowzs in employee_login_status.iterrows():
+        if rowzs["Username"] == username:
+            if rowzs["Status"] != "Online":
+                st.switch_page("pages/login.py")
 
-position = conn.read(worksheet="Knitting Positions", ttl="35s")
-position = pd.DataFrame(position)
+    position = conn.read(worksheet="Knitting Positions", ttl="35s")
+    position = pd.DataFrame(position)
 
-for x, row in position.iterrows():
-    if row["Operator"] == name:
-        machine_1 = row["Machine 1"]
-        machine_2 = row["Machine 2"]
-
-today = str(date.today())
-now = datetime.now(tz=pytz.timezone('US/Eastern'))
-current_time = now.strftime("%I:%M %p")
+    for x, row in position.iterrows():
+        if row["Operator"] == name:
+            machine_1 = row["Machine 1"]
+            machine_2 = row["Machine 2"]
+except gspread.exceptions.APIError:
+    error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
+    time.sleep(5)
+    error_gsheet_connection.empty()
 
 tab1, tab2, tab3 = st.tabs([f"Machine {machine_1}", f"Machine {machine_2}", "Schedule Information"])
 
 with tab1:
     with st.form("Machine 1", clear_on_submit=True):
         st.write(f"Machine {machine_1} Defect Log ")
-        # defect_time = st.number_input("Defect REVS", min_value=0, max_value=None, value=None,key="Defect REV")
         defect_type = st.selectbox(
             "Defect Type",
             (
