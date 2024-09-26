@@ -4,13 +4,19 @@ from streamlit import success
 from streamlit_gsheets import GSheetsConnection
 import time
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 
-employee_data = conn.read(worksheet="Employees Login", ttl="120s")
-employee_information = conn.read(worksheet="Employees Data", ttl="120s")
-employee_data = pd.DataFrame(employee_data)
-employee_information = pd.DataFrame(employee_information)
+
 
 
 placeholder = st.empty()
@@ -28,11 +34,15 @@ with placeholder.form("Create"):
     if back:
         st.switch_page("pages/login.py")
     if register:
-        if employee_id in employee_information.values:
+        employee_data = conn.read(worksheet="Employees Login", ttl="120s", max_entries=800)
+        employee_name = conn.read(worksheet="Employees Data", ttl="120s", max_entries=800)
+        employee_data = pd.DataFrame(employee_data)
+        employee_name = pd.DataFrame(employee_name)
+        if employee_id in employee_name.values:
 
             if employee_id in employee_data.values:
                 error_id = st.error("You are already in the database contact Supervisor if you forgot your login")
-                time.sleep(3)
+                time.sleep(2)
                 error_id = error_id.empty()
             else:
                 if username in employee_data.values:
@@ -40,7 +50,7 @@ with placeholder.form("Create"):
                     time.sleep(3)
                     error_username = error_username.empty()
                 else:
-                    for x, row in employee_information.iterrows():
+                    for x, row in employee_name.iterrows():
                         if row["Employee ID"] == employee_id:
                             position = row["Position"]
                             break
