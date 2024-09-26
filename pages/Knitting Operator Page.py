@@ -56,6 +56,7 @@ with tab1:
         submit = st.form_submit_button("Submit")
         if submit:
             try:
+                print(da)
                 machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s",
                                                  max_entries=20)
                 machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
