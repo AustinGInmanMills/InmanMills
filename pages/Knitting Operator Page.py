@@ -7,18 +7,29 @@ from datetime import date
 import pytz
 from streamlit_js_eval import streamlit_js_eval
 
-
-if "name" not in st.session_state:
-    if "name" in st.query_params:
-        name = str(st.query_params.name)
-        username = str(st.query_params.username)
-        shift = str(st.query_params.shift)
-    else:
-        streamlit_js_eval(js_expressions="parent.window.location.reload()")
+if "name" in st.session_state:
+    name = st.session_state.name
+    username = st.session_state.username
+    shift = st.session_state.shift
+    st.query_params.name = st.session_state.name
+    st.query_params.username = st.session_state.username
+    st.query_params.shift = st.session_state.shift
 else:
-    name = str(st.session_state.name)
-    username = str(st.session_state.username)
-    shift = str(st.session_state.shift)
+    name = st.query_params.name
+    username = st.query_params.username
+    shift = st.query_params.shift
+
+#if "name" not in st.session_state:
+    #if "name" in st.query_params:
+        #name = str(st.query_params.name)
+        #username = str(st.query_params.username)
+        #shift = str(st.query_params.shift)
+    else:
+        #streamlit_js_eval(js_expressions="parent.window.location.reload()")
+#else:
+    #name = str(st.session_state.name)
+    #username = str(st.session_state.username)
+    #shift = str(st.session_state.shift)
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 employee_login_status = conn.read(worksheet="Employees Login", ttl="35s")
