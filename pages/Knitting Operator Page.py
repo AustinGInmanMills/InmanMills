@@ -24,7 +24,7 @@ else:
         #name = str(st.query_params.name)
         #username = str(st.query_params.username)
         #shift = str(st.query_params.shift)
-    else:
+    #else:
         #streamlit_js_eval(js_expressions="parent.window.location.reload()")
 #else:
     #name = str(st.session_state.name)
