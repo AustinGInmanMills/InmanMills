@@ -7,7 +7,6 @@ from datetime import datetime
 from datetime import date
 import pytz
 
-from pages.login import placeholder
 
 hide_st_style = """
             <style>
@@ -116,7 +115,7 @@ try:
                         success_new_roll_submit = st.success(f"Successfully Started New Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
-                except:
+                except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
                     error_gsheet_connection.empty()
@@ -152,7 +151,7 @@ try:
                         success_new_roll_submit = st.success(f"Successfully Doffed Roll On Machine {machine_1}")
                         time.sleep(2)
                         success_new_roll_submit = success_new_roll_submit.empty()
-                except:
+                except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
                     error_gsheet_connection.empty()
@@ -181,7 +180,7 @@ try:
                     success_defect_update_2 = st.success("Successfully Submitted")
                     time.sleep(2)
                     success_defect_update_2 = success_defect_update_2.empty()
-                except:
+                except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
                     error_gsheet_connection.empty()
@@ -220,7 +219,7 @@ try:
                         success_new_roll_submit2 = st.success(f"Successfully Started New Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
-                except:
+                except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
                     error_gsheet_connection.empty()
@@ -257,7 +256,7 @@ try:
                         success_new_roll_submit2 = st.success(f"Successfully Doffed Roll On Machine {machine_2}")
                         time.sleep(2)
                         success_new_roll_submit2 = success_new_roll_submit2.empty()
-                except:
+                except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
                     error_gsheet_connection.empty()
