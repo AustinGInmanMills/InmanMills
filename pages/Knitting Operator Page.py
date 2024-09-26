@@ -7,6 +7,8 @@ from datetime import datetime
 from datetime import date
 import pytz
 
+from pages.login import placeholder
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -278,7 +280,7 @@ try:
             error_gsheet_connection.empty()
 except gspread.exceptions.APIError:
     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
-    time.sleep(10)
+    #time.sleep(5)
     #error_gsheet_connection.empty()
-    st.rerun()
+    #st.rerun()
 
