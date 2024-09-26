@@ -31,7 +31,7 @@ try:
         if back:
             st.switch_page("pages/login.py")
         if register:
-            @try:
+            #try:
                 employee_data = conn.read(worksheet="Employees Login", ttl="120s", max_entries=800)
                 employee_name = conn.read(worksheet="Employees Data", ttl="120s", max_entries=800)
                 employee_data = pd.DataFrame(employee_data)
