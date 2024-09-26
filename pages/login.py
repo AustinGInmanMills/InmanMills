@@ -51,7 +51,7 @@ if submit:
                         st.session_state.username = row["Username"]
                         st.session_state.name = str(rows["First Name"])
                         st.session_state.shift = str(rows["Shift"])
-                        success_login = st.success("Login Successful Loading...")
+                        success_login = st.success(f"Welcome {rows["First Name"]}")
                         time.sleep(2)
                         success_login = success_login.empty()
                         if row['Position'] == "Knitting Operator":
