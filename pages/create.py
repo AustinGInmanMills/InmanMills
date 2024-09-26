@@ -31,7 +31,7 @@ try:
         if back:
             st.switch_page("pages/login.py")
         if register:
-            #try:
+            try:
                 employee_data = conn.read(worksheet="Employees Login", ttl="120s", max_entries=800)
                 employee_name = conn.read(worksheet="Employees Data", ttl="120s", max_entries=800)
                 employee_data = pd.DataFrame(employee_data)
@@ -54,7 +54,7 @@ try:
                                     position = row["Position"]
                                     break
                             success = success("Account successfully created")
-                            employee_data.loc[len(employee_data.index)] = [username, password, position, employee_id]
+                            employee_data.loc[len(employee_data.index)] = [username, password, position, employee_id, "Offline"]
                             conn.update(worksheet="Employees Login", data=employee_data)
                             time.sleep(2)
                             success = success.empty()
@@ -63,10 +63,10 @@ try:
                     error_no_id_found = st.error("Employee ID not found")
                     time.sleep(3)
                     error_username = error_no_id_found.empty()
-            #except:
-                #error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
-                #time.sleep(5)
-                #error_gsheet_connection.empty()
+            except:
+                error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
+                time.sleep(5)
+                error_gsheet_connection.empty()
 except gspread.exceptions.APIError:
     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
     time.sleep(5)
