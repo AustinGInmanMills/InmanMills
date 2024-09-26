@@ -95,7 +95,6 @@ if submit:
                         elif row['Position'] == "Card Room Over Hauler":
                             st.switch_page('pages/Card Room Over Hauler Page.py')
     except gspread.exceptions.APIError:
-        st.write()
         error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
         time.sleep(5)
-        error_gsheet_connection.empty()
+        st.rerun()
