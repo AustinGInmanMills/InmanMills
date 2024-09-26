@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from gspread.exceptions import APIError
 from streamlit_gsheets import GSheetsConnection
 import time
 
@@ -48,11 +49,8 @@ if submit:
                         row["Status"] = "Online"
                         conn.update(worksheet="Employees Login", data=employee_data)
                         st.session_state.username = row["Username"]
-                        # st.query_params.username = row["Username"]
                         st.session_state.name = str(rows["First Name"])
-                        # st.query_params.name = str(rows["First Name"])
                         st.session_state.shift = str(rows["Shift"])
-                        # st.query_params.shift = str(rows["Shift"])
                         success_login = st.success("Login Successful Loading...")
                         time.sleep(2)
                         success_login = success_login.empty()
@@ -96,7 +94,8 @@ if submit:
                             st.switch_page('pages/Card Room Tech Page.py')
                         elif row['Position'] == "Card Room Over Hauler":
                             st.switch_page('pages/Card Room Over Hauler Page.py')
-    except:
+    except APIError:
+        st.write()
         error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
         time.sleep(5)
         error_gsheet_connection.empty()
