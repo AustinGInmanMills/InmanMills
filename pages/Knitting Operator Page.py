@@ -159,7 +159,6 @@ try:
     with tab2:
         with st.form("Machine 2", clear_on_submit=True):
             st.write(f"Machine {machine_2} Defect Log ")
-            # defect_time = st.number_input("Defect REVS", min_value=0, max_value=None, value=None,key="Defect REV2")
             defect_type = st.selectbox(
                 "Defect Type",
                 (
@@ -171,15 +170,31 @@ try:
             submit = st.form_submit_button("Submit")
             if submit:
                 try:
-                    machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s",
-                                                     max_entries=200)
-                    machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
-                    machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "-",
-                                                                                 defect_type]
-                    conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
-                    success_defect_update_2 = st.success("Successfully Submitted")
-                    time.sleep(2)
-                    success_defect_update_2 = success_defect_update_2.empty()
+                    
+                    
+                    
+                    
+                    if defect_type is not None:
+                        machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet",
+                                                         ttl="35s",
+                                                         max_entries=200)
+                        machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
+                        machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time,
+                                                                                     "-",
+                                                                                     defect_type]
+                        conn.update(worksheet=f"Knitting Machine {machine_2} Flag Sheet", data=machine_2_flags_data)
+                        success_defect_update_2 = st.success("Successfully Submitted")
+                        time.sleep(2)
+                        success_defect_update_2 = success_defect_update_2.empty()
+                    else:
+                        error_no_selection = st.error("Defect Not Selected")
+                        time.sleep(2)
+                        error_no_selection.empty()
+                        
+                        
+                        
+                        
+                        
                 except gspread.exceptions.APIError:
                     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                     time.sleep(5)
