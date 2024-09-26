@@ -67,7 +67,7 @@ try:
             if submit:
                 try:
                     machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries= 200)
                     machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
                     machine_1_flags_data.loc[len(machine_1_flags_data.index)] = [name, shift, today, current_time, "-",
                                                                                  defect_type]
@@ -86,7 +86,7 @@ try:
             if start_roll:
                 try:
                     machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries= 200)
                     machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
                     if "Start" in machine_1_flags_data.values:
                         for index, row in machine_1_flags_data[::-1].iterrows():
@@ -123,7 +123,7 @@ try:
             if end_roll:
                 try:
                     machine_1_flags_data = conn.read(worksheet=f"Knitting Machine {machine_1} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries=200)
                     machine_1_flags_data = pd.DataFrame(machine_1_flags_data)
                     if "Doff" in machine_1_flags_data.values:
                         for index, row in machine_1_flags_data[::-1].iterrows():
@@ -171,7 +171,7 @@ try:
             if submit:
                 try:
                     machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries=200)
                     machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
                     machine_2_flags_data.loc[len(machine_2_flags_data.index)] = [name, shift, today, current_time, "-",
                                                                                  defect_type]
@@ -190,7 +190,7 @@ try:
             if start_roll:
                 try:
                     machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries=200)
                     machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
                     if "Start" in machine_2_flags_data.values:
                         for index, row in machine_2_flags_data[::-1].iterrows():
@@ -227,7 +227,7 @@ try:
             if end_roll:
                 try:
                     machine_2_flags_data = conn.read(worksheet=f"Knitting Machine {machine_2} Flag Sheet", ttl="35s",
-                                                     max_entries=20)
+                                                     max_entries=200)
                     machine_2_flags_data = pd.DataFrame(machine_2_flags_data)
                     if "Doff" in machine_2_flags_data.values:
                         for index, row in machine_2_flags_data[::-1].iterrows():
