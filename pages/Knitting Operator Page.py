@@ -1,3 +1,4 @@
+import gspread.exceptions
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
@@ -73,7 +74,7 @@ with tab1:
                 success_defect_update_1 = st.success("Successfully Submitted")
                 time.sleep(2)
                 success_defect_update_1 = success_defect_update_1.empty()
-            except:
+            except gspread.exceptions.APIError:
                 error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                 time.sleep(5)
                 error_gsheet_connection.empty()
@@ -115,7 +116,7 @@ with tab1:
                 error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                 time.sleep(5)
                 error_gsheet_connection.empty()
-            
+
 
         end_roll = st.form_submit_button("Doff Roll")
         if end_roll:
@@ -217,7 +218,7 @@ with tab2:
                 error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                 time.sleep(5)
                 error_gsheet_connection.empty()
-            
+
 
         end_roll = st.form_submit_button("Doff Roll")
         if end_roll:
@@ -253,7 +254,7 @@ with tab2:
                 error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
                 time.sleep(5)
                 error_gsheet_connection.empty()
-            
+
 
 sign_out = st.button("Sign out")
 if sign_out:
@@ -267,7 +268,7 @@ if sign_out:
                     st.query_params.clear()
                     time.sleep(0.5)
                     st.switch_page("pages/login.py")
-    except:
+    except gspread.exceptions.APIError:
         error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
         time.sleep(5)
         error_gsheet_connection.empty()
