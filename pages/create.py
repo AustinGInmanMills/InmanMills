@@ -53,7 +53,7 @@ try:
                                 if row["Employee ID"] == employee_id:
                                     position = row["Position"]
                                     break
-                            success = success("Account successfully created")
+                            success = success("Account Successfully Created")
                             employee_data.loc[len(employee_data.index)] = [username, password, position, employee_id, "Offline"]
                             conn.update(worksheet="Employees Login", data=employee_data)
                             time.sleep(2)
