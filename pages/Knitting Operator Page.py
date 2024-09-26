@@ -278,7 +278,7 @@ try:
             error_gsheet_connection.empty()
 except gspread.exceptions.APIError:
     error_gsheet_connection = st.error("Connection to server lost reconnecting please wait")
-    time.sleep(5)
-    error_gsheet_connection.empty()
+    #time.sleep(5)
+    #error_gsheet_connection.empty()
     st.rerun()
 
